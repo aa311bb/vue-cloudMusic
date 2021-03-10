@@ -580,8 +580,9 @@ export default {
   }
   .playList {
     position: fixed;
+    top: 50%;
     width: 95%;
-    height: 25vh;
+    height: 50vh;
     overflow-y: auto;
     background: white;
     border-radius: 5%;
