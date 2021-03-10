@@ -5,6 +5,8 @@ import router from './router'
 import './assets/animate.min.css'
 import './assets/minireset.min.css'
 import './assets/icon/iconfont.css'
+import 'video.js/dist/video-js.css'
+import 'vue-video-player/src/custom-theme.css'
 Vue.config.productionTip = false
 
 //播放音乐相关的数据存储 VUE实例里面

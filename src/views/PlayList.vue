@@ -13,7 +13,7 @@
           style="color:white;font-size:20px"
         ></span>
       </router-link>
-      <span class="top_1"
+      <span class="top_1" style="margin-left:20px"
         ><span>歌单</span><span>{{ music.playlist.name }}</span></span
       >
       <div class="top_2">
@@ -33,7 +33,10 @@
       <div class="img">
         <img :src="`${music.playlist.coverImgUrl}`" />
       </div>
-      <div style="width:50%;color:white;padding-right:10px;padding-bottom:40px" class="banner_1">
+      <div
+        style="width:50%;color:white;padding-right:10px;padding-bottom:40px"
+        class="banner_1"
+      >
         <span>{{ music.playlist.description }}</span>
       </div>
     </div>
@@ -85,8 +88,6 @@ export default {
             //   console.log(this.musicName)
           });
       });
-
-    
   },
   components: {
     SongItem,
@@ -118,7 +119,6 @@ export default {
     .top_1 {
       display: flex;
       flex-direction: column;
-      margin-left: -100px;
       span {
         &:nth-of-type(1) {
           color: white;
@@ -155,10 +155,10 @@ export default {
         border-radius: 10%;
       }
     }
-    .banner_1{
-          height: 20vh;
-          overflow: auto;
-      }
+    .banner_1 {
+      height: 20vh;
+      overflow: auto;
+    }
   }
   .list {
     background: white;

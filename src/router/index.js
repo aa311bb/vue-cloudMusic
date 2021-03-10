@@ -28,6 +28,16 @@ const routes = [
   path:'/playlist/:id',
   component:()=>import('../views/PlayList'),
   meta:{title:'',showNav:true}
+},
+{
+  path:'/mv',
+  component:()=>import('../views/Mv'),
+  meta:{title:'',showNav:true}
+},
+{
+  path:'/video/:id',
+  component:()=>import('../views/Videos'),
+  meta:{title:'',showNav:true}
 }
 ]
 

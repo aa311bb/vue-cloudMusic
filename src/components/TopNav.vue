@@ -3,6 +3,7 @@
         <li><router-link to="/recommend">推荐音乐</router-link>  </li>
         <li><router-link to="/hot">热歌榜</router-link>  </li>
         <li><router-link to="/search">搜索</router-link>  </li>
+        <li><router-link to="/mv">MV</router-link></li>
     </ul>
 </template>
 <style lang="less" scoped>

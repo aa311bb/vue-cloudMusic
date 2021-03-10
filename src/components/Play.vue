@@ -68,7 +68,7 @@
               class="iconfont icon-fanhui"
               style="color:white"
             ></span>
-            <span style="color:white">{{
+            <span style="color:white;margin-left:40px">{{
               $root.musicStore.currentMusic.name
             }}</span>
             <span class="iconfont icon-share" style="color:white"></span>
