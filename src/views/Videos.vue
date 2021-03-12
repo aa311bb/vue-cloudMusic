@@ -6,13 +6,23 @@
       @click="goback"
     ></span>
     <div v-if="loading">
-      <div class="videos">
-        <video-player
-          class="video-player vjs-default-skin vjs-big-play-centered"
-          ref="videoPlayer"
-          :playsinline="true"
-          :options="playerOptions"
-        ></video-player>
+        <div class="videos">
+          <video-player
+            class="video-player vjs-default-skin vjs-big-play-centered"
+            ref="videoPlayer"
+            :playsinline="true"
+            :options="playerOptions"
+            @play="addToList"
+          ></video-player>
+           <vue-baberrage
+        v-show="danmu"
+          :isShow="barrageIsShow"
+          :barrageList="barrageList"
+          :loop="barrageLoop"
+          :boxHeight=" boxHeight"
+        >
+        </vue-baberrage>
+       
       </div>
       <div class="zaozi"></div>
       <div class="second">
@@ -50,6 +60,7 @@
 <script>
 import Loading from "../components/Loading";
 import { videoPlayer } from "vue-video-player";
+import { MESSAGE_TYPE } from 'vue-baberrage';
 export default {
   name: "Video",
   data() {
@@ -81,6 +92,14 @@ export default {
       playing: true,
       comment: null,
       loading: false,
+      danmu:false,
+      //弹幕
+      msg: "Hello vue-baberrage",
+      barrageIsShow: true,
+      currentId: 0,
+      barrageLoop: true,
+      boxHeight: 120,
+      barrageList: [],
     };
   },
   filters: {
@@ -111,8 +130,22 @@ export default {
     goback() {
       this.$router.go(-1);
     },
+    addToList() {
+      this.danmu=true;
+      let time=2;
+      this.comment.comments.forEach((v) => {
+          this.barrageList.push({
+            id: v.commentId, //弹幕ID
+            avatar: v.user.avatarUrl, //头像
+            msg: v.content, //弹幕消息
+            time: time++, //屏幕展示时间
+            type: MESSAGE_TYPE.NORMAL, //类型
+            // barrageStyle: v.barrageStyle, //自定义样式
+          });
+        });
+      // console.log(111)
+    },
   },
-  //页面进来时自动播放
   created() {
     this.$http
       .get("https://music.kele8.cn/mv/url?id=" + this.$route.params.id)
@@ -123,6 +156,7 @@ export default {
       .get("https://music.kele8.cn/comment/mv?id=" + this.$route.params.id)
       .then((data) => {
         this.comment = data.data;
+        // console.log(data);
       });
     setTimeout(() => {
       this.loading = true;
@@ -170,7 +204,7 @@ export default {
   width: 100%;
   height: 220px;
 }
-.loading{
+.loading {
   position: fixed;
   top: 300px;
   left: 50%;
@@ -207,5 +241,11 @@ export default {
       }
     }
   }
+}
+.page .baberrage-stage{
+  position: absolute;
+  height:90px;
+  z-index: 23;
+  top: 30px;
 }
 </style>

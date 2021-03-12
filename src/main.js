@@ -7,6 +7,8 @@ import './assets/minireset.min.css'
 import './assets/icon/iconfont.css'
 import 'video.js/dist/video-js.css'
 import 'vue-video-player/src/custom-theme.css'
+import { vueBaberrage } from 'vue-baberrage'
+Vue.use(vueBaberrage)
 Vue.config.productionTip = false
 
 //播放音乐相关的数据存储 VUE实例里面
